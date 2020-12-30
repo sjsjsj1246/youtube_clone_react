@@ -23,7 +23,11 @@ class Youtube {
         type: 'video',
       },
     });
-    return response.data.items;
+    const items = response.data.items.map((item) => ({
+      ...item,
+      id: item.id.videoId,
+    }));
+    return items;
   }
 }
 
